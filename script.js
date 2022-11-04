@@ -1,82 +1,124 @@
 // DOM QUERY
 const buttonsContainer = document.querySelector('.buttonsContainer');
 const buttons = document.querySelectorAll('.btn');
-const screenArea = document.querySelector('.screen p');
+const screenArea = document.querySelector('.screenArea');
+const num1 = document.querySelector('.num1');
+const num2 = document.querySelector('.num2');
+const operator = document.querySelector('.operator');
 
-//console.log(buttons);
+console.dir(num1);
+
+// Functions
+function addition(a, b) {
+   return a + b;
+}
+
+function subs(a, b) {
+   return a - b;
+}
+
+function multiply(a, b) {
+   return a * b;
+}
+
+function division(a, b) {
+   return a / b;
+}
+
+function operate(op, a, b) {
+   if (op == '+') {
+      return addition(a, b);
+   }
+   if (op == '-') {
+      return subs(a, b);
+   }
+   if (op == '*') {
+      return multiply(a, b);
+   }
+   if (op == '/') {
+      return division(a, b);
+   }
+}
+
+function display(operator) {
+   const screenOneValue = num1.textContent;
+   num2.textContent += `${screenOneValue} ${operator}`;
+   num1.textContent = '';
+}
+
+//console.log(operate('+', 5, 4));
 
 buttonsContainer.addEventListener('click', (e) => {
-   console.dir(e.target);
    if (e.target.id === 'equal') {
-      console.log(`equal btn`);
+      let valueOne = +num1.textContent;
+      let valueTwoStr = num2.textContent.trim().replace(/\s/g, '');
+      let valueTwoNum = +valueTwoStr.substring(0, valueTwoStr.length - 1);
+
+      num2.textContent = `${valueTwoNum} + ${valueOne} =`;
+      num1.textContent = `${valueOne + valueTwoNum}`;
+      console.log(valueOne);
+      console.log(valueTwoNum);
    }
    if (e.target.id === 'clear') {
-      console.log(`clear btn`);
-      screenArea.textContent = '.';
+      //console.dir(screenArea);
+      //screenArea.textContent = '';
    }
    if (e.target.id === 'zero') {
-      console.log(`zero btn`);
-      screenArea.textContent += '0';
+      //console.dir(screenArea);
+      //screenArea.textContent += '0';
+      num1.textContent += '0';
    }
    if (e.target.id === 'one') {
-      console.log(`one btn`);
-      screenArea.textContent += '1';
+      //console.dir(screenArea);
+      num1.textContent += '1';
    }
    if (e.target.id === 'two') {
-      console.log(`two btn`);
-      screenArea.textContent += '2';
+      //console.dir(screenArea);
+      //screenArea.textContent += '2';
    }
    if (e.target.id === 'three') {
-      console.log(`three btn`);
-      screenArea.textContent += '3';
+      //console.dir(screenArea);
+      //screenArea.textContent += '3';
    }
    if (e.target.id === 'four') {
-      console.log(`four btn`);
-      screenArea.textContent += '4';
+      //console.dir(screenArea);
+      //screenArea.textContent += '4';
    }
    if (e.target.id === 'five') {
-      console.log(`five btn`);
-      screenArea.textContent += '5';
+      //console.dir(screenArea);
+      //screenArea.textContent += '5';
    }
    if (e.target.id === 'six') {
-      console.log(`six btn`);
-      screenArea.textContent += '6';
+      //console.dir(screenArea);
+      //screenArea.textContent += '6';
    }
    if (e.target.id === 'seven') {
-      console.log(`seven btn`);
-      screenArea.textContent += '7';
+      //console.dir(screenArea);
+      //screenArea.textContent += '7';
    }
    if (e.target.id === 'eight') {
-      console.log(`eight btn`);
-      screenArea.textContent += '8';
+      //console.dir(screenArea);
+      //screenArea.textContent += '8';
    }
    if (e.target.id === 'nine') {
-      console.log(`nine btn`);
-      screenArea.textContent += '9';
+      //console.dir(screenArea);
+      //screenArea.textContent += '9';
    }
    if (e.target.id === 'addition') {
-      console.log(`addition btn`);
-      screenArea.textContent += '+';
+      display('+');
+      /*  console.log(screenOneValue);
+      console.log(num2.textContent); */
    }
    if (e.target.id === 'substraction') {
-      console.log(`substraction btn`);
-      screenArea.textContent += '-';
+      //console.dir(screenArea);
+      //screenArea.textContent += '-';
    }
-   if (e.target.id === 'times') {
-      console.log(`times btn`);
-      screenArea.textContent += '*';
+   if (e.target.id === 'multiply') {
+      //console.dir(screenArea);
+      //screenArea.textContent += '*';
    }
    if (e.target.id === 'division') {
-      console.log(`division btn`);
-      screenArea.textContent += '/';
+      //console.dir(screenArea);
+      //screenArea.textContent += '/';
    }
 });
-
-/* btnOne.addEventListener('click', (e) => {
-   screenArea.textContent += '1';
-});
-
-btntwo.addEventListener('click', (e) => {
-   screenArea.textContent += '2';
-});
- */
